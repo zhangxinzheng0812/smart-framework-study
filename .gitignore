@@ -1,0 +1,13 @@
+# Maven #
+target/
+
+# IDEA #
+.idea/
+smart-framework.iml
+
+# Eclipse #
+.settings/
+.metadata/
+.classpath/
+.project/
+Servers/
