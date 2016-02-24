@@ -1,6 +1,7 @@
 package org.smart4j.framework.bean;
 
 import org.smart4j.framework.util.CastUtil;
+import org.smart4j.framework.util.CollectionUtil;
 
 import java.util.Map;
 
@@ -19,5 +20,9 @@ public class Param {
 
     public Map<String,Object> getMap(){
         return paramMap;
+    }
+
+    public boolean isEmpty(){
+        return CollectionUtil.isEmpty(paramMap);
     }
 }

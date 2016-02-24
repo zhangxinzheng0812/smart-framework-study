@@ -14,6 +14,7 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +28,7 @@ import java.util.Map;
 /**
  * Created by yzy on 2016/2/23.
  */
+@WebServlet(urlPatterns = "/*", loadOnStartup = 0)
 public class DispatcherServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -70,8 +72,13 @@ public class DispatcherServlet extends HttpServlet {
                 }
             }
             Param param = new Param(paramsMap);
+            Object result;
             Method actionMethod = handler.getActionMethod();
-            Object result = ReflectionUtil.invokeMethod(controllerBean, actionMethod, param);
+            if(param.isEmpty()){
+                result = ReflectionUtil.invokeMethod(controllerBean, actionMethod);
+            } else {
+                result = ReflectionUtil.invokeMethod(controllerBean, actionMethod, param);
+            }
             if(result instanceof View){
                 View view = (View)result;
                 String path = view.getPath();
