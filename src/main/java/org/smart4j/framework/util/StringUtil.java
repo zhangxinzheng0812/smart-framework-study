@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
  * Created by yzy on 2016/2/23.
  */
 public final  class StringUtil {
+    public static final String SEPARATOR = String.valueOf((char)29);
     public static boolean isEmpty(String str){
         if(null != str){
             str = str.trim();

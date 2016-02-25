@@ -87,4 +87,5 @@ public final class ConfigHelper {
     public static boolean getBoolean(String key) {
         return PropsUtil.getBoolean(CONFIG_PROPS, key);
     }
+
 }
